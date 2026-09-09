@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0f">
+<title>SCI//NOVA — GCSE Science</title>
+<style>
+:root{--bg:#f2f4f8;--panel:rgba(255,255,255,.72);--text:#11131a;--muted:#687080;--line:rgba(20,25,35,.11);--accent:#695cff;--accent2:#16b9a8;--shadow:0 18px 50px rgba(20,25,50,.12)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 15% 0%,#dfe5ff 0,transparent 35%),radial-gradient(circle at 90% 15%,#d8fff8 0,transparent 30%),var(--bg);min-height:100vh}
+body.dark{--bg:#090a0e;--panel:rgba(22,23,29,.78);--text:#f4f5f8;--muted:#9ca3b2;--line:rgba(255,255,255,.1);--shadow:0 22px 70px rgba(0,0,0,.35);background:radial-gradient(circle at 10% 0%,#191b35 0,transparent 35%),radial-gradient(circle at 90% 10%,#102b2b 0,transparent 30%),#090a0e}
+button,input{font:inherit}button{cursor:pointer;border:0}.app{max-width:1250px;margin:auto;padding:18px 18px 90px}.glass{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:24px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;position:sticky;top:12px;z-index:10}.brand{font-weight:900;letter-spacing:-.05em}.brand span{color:var(--accent)}.nav-actions{display:flex;gap:8px;align-items:center}.icon{width:42px;height:42px;border-radius:13px;background:transparent;color:var(--text);border:1px solid var(--line)}.profile{padding:8px 12px;border-radius:14px;background:rgba(105,92,255,.12);font-weight:750}
+.hero{margin-top:28px;padding:42px 34px;display:grid;grid-template-columns:1.4fr .8fr;gap:25px;align-items:center}.eyebrow{font-size:12px;font-weight:900;letter-spacing:.15em;color:var(--accent);text-transform:uppercase}.hero h1{font-size:clamp(40px,7vw,78px);line-height:.92;letter-spacing:-.065em;margin:12px 0}.hero p{color:var(--muted);font-size:17px;max-width:650px}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.stat{padding:20px;border:1px solid var(--line);border-radius:20px}.stat b{font-size:28px;display:block}.stat small{color:var(--muted)}
+.section{margin-top:24px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:13px}.section h2{margin:0;font-size:25px;letter-spacing:-.04em}.sub{color:var(--muted);font-size:13px}
+.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.subject{padding:22px;min-height:180px;position:relative;overflow:hidden}.subject:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-55px;bottom:-70px;background:var(--c);opacity:.15}.subject .orb{width:45px;height:45px;border-radius:15px;background:var(--c);display:grid;place-items:center;color:#fff;font-weight:900}.subject h3{margin:18px 0 5px;font-size:22px}.subject p{margin:0;color:var(--muted);font-size:13px}.pill{display:inline-flex;margin-top:15px;padding:6px 9px;border-radius:999px;background:rgba(120,120,140,.1);font-size:11px;font-weight:800}
+.search{display:flex;gap:10px;margin-bottom:14px}.search input{flex:1;padding:14px 16px;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:16px;outline:0}.search input:focus{border-color:var(--accent)}
+.topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.topic{padding:18px;transition:.18s}.topic:hover{transform:translateY(-2px)}.topic h4{margin:0 0 7px}.topic small{color:var(--muted)}.topic .go{margin-top:14px;width:100%;padding:10px;border-radius:12px;background:var(--text);color:var(--bg);font-weight:800}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.52);display:none;place-items:center;padding:18px;z-index:30}.modal.show{display:grid}.dialog{width:min(850px,100%);max-height:90vh;overflow:auto;padding:24px}.close{float:right;background:transparent;color:var(--muted);font-size:25px}.choice{padding:15px;border:1px solid var(--line);border-radius:15px;background:transparent;color:var(--text);width:100%;text-align:left;margin-top:9px}.choice:hover{border-color:var(--accent)}.mode-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.mode{padding:20px;border-radius:18px;background:rgba(105,92,255,.1);border:1px solid var(--line);color:var(--text);text-align:left}.mode b{display:block;margin-bottom:5px}.flash{min-height:340px;display:grid;place-items:center;text-align:center;padding:35px;border:1px solid var(--line);border-radius:24px;margin:18px 0;background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(105,92,255,.08))}.flash h2{font-size:30px;max-width:680px}.answer{color:var(--accent2);font-weight:850;font-size:18px;max-width:700px}.controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.primary{background:var(--accent);color:#fff;padding:12px 17px;border-radius:13px;font-weight:850}.secondary{background:transparent;color:var(--text);border:1px solid var(--line);padding:12px 17px;border-radius:13px;font-weight:800}
+.quiz-option.correct{border-color:#1bbf9b;background:rgba(27,191,155,.13)}.quiz-option.wrong{border-color:#e05267;background:rgba(224,82,103,.13)}
+.rewards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.reward{padding:16px;text-align:center}.avatar{height:105px;border-radius:18px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,rgba(105,92,255,.15),rgba(22,185,168,.15));margin-bottom:10px}.reward button{width:100%;margin-top:10px;padding:9px;border-radius:11px;background:var(--text);color:var(--bg);font-weight:800}.reward button:disabled{opacity:.4}
+.login{position:fixed;inset:0;background:rgba(0,0,0,.68);z-index:50;display:grid;place-items:center;padding:18px}.login-card{width:min(420px,100%);padding:28px}.login-card input{width:100%;margin:7px 0;padding:14px;border-radius:13px;border:1px solid var(--line);background:transparent;color:var(--text)}.login-card button{width:100%;margin-top:10px;padding:13px;border-radius:13px}
+.progress{height:9px;background:rgba(120,120,140,.14);border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0}
+footer{text-align:center;color:var(--muted);font-size:12px;margin-top:45px}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.subjects,.topic-grid{grid-template-columns:1fr 1fr}.rewards{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.app{padding:10px 10px 70px}.hero{padding:28px 20px}.subjects,.topic-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.profile{display:none}.mode-row{grid-template-columns:1fr}.rewards{grid-template-columns:1fr 1fr}}
+
+.nori-bubble{position:fixed;right:18px;bottom:20px;width:58px;height:58px;border-radius:20px;background:linear-gradient(135deg,var(--accent),#8e7cff);color:#fff;font-size:24px;font-weight:950;box-shadow:0 14px 35px rgba(70,55,180,.35);z-index:40}
+.nori-panel{position:fixed;right:18px;bottom:88px;width:min(380px,calc(100vw - 28px));height:540px;z-index:40;display:none;overflow:hidden;flex-direction:column}
+.nori-panel.show{display:flex}.nori-head{display:flex;align-items:center;gap:10px;padding:13px 14px;border-bottom:1px solid var(--line);cursor:move;user-select:none}
+.nori-face{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:950}
+.nori-head small{display:block;color:var(--muted);font-size:9px;letter-spacing:.12em}.nori-x{margin-left:auto;background:transparent;color:var(--muted);font-size:24px}
+.nori-chat{flex:1;overflow:auto;padding:14px}.nori-msg{padding:11px 13px;border-radius:15px;margin:8px 0;line-height:1.42;font-size:13px;white-space:pre-wrap}.nori-msg.bot{background:rgba(105,92,255,.10);border:1px solid var(--line)}.nori-msg.user{background:var(--text);color:var(--bg);margin-left:32px}
+.nori-tools{display:flex;gap:6px;overflow:auto;padding:8px 10px;border-top:1px solid var(--line)}.nori-tools button{white-space:nowrap;padding:7px 9px;border-radius:10px;background:rgba(120,120,140,.1);color:var(--text);border:1px solid var(--line);font-size:11px}
+.nori-input{display:flex;gap:7px;padding:10px;border-top:1px solid var(--line)}.nori-input input{flex:1;min-width:0;border:1px solid var(--line);background:transparent;color:var(--text);border-radius:12px;padding:10px}.nori-input button{width:42px;border-radius:12px;background:var(--accent);color:#fff;font-weight:900}
+@media(max-width:560px){.nori-panel{right:10px;bottom:78px;width:calc(100vw - 20px);height:min(560px,72vh)}.nori-bubble{right:12px;bottom:12px}}
+</style>
+</head>
+<body>
+<div id="login" class="login">
+  <div class="login-card glass">
+    <div class="eyebrow">GCSE SCIENCE • STUDY OS</div>
+    <h1>Welcome to SCI//NOVA</h1>
+    <p class="sub">Your local account keeps progress, XP, coins and outfits on this device.</p>
+    <input id="nameInput" placeholder="Choose a display name" maxlength="20">
+    <button class="primary" onclick="login()">Enter the hub</button>
+  </div>
+</div>
+
+<div class="app">
+<nav class="glass">
+  <div class="brand">SCI<span>//</span>NOVA</div>
+  <div class="nav-actions"><button class="icon" onclick="toggleDark()" title="Theme">◐</button><button class="icon" onclick="showRewards()" title="Rewards">✦</button><div class="profile" id="profile">Guest</div></div>
+</nav>
+
+<section class="hero glass">
+ <div><div class="eyebrow">BIOLOGY • CHEMISTRY • PHYSICS</div><h1>Study science.<br><span style="color:var(--accent)">Level up.</span></h1><p>Clean flashcards, exam-style quizzes, progress tracking and a cosmetic reward system — designed around the AQA GCSE Separate Science structure.</p><div style="margin-top:20px"><button class="primary" onclick="document.getElementById('subjects').scrollIntoView({behavior:'smooth'})">Start studying →</button></div></div>
+ <div class="stats"><div class="stat"><b id="xp">0</b><small>XP</small></div><div class="stat"><b id="coins">0</b><small>Coins</small></div><div class="stat"><b id="streak">0</b><small>Day streak</small></div><div class="stat"><b id="mastery">0%</b><small>Mastery</small></div></div>
+</section>
+
+<section class="section" id="subjects"><div class="section-head"><div><h2>Choose a science</h2><div class="sub">Pick a subject → topic → flashcards or quiz.</div></div></div><div class="subjects" id="subjectCards"></div></section>
+
+<section class="section"><div class="section-head"><div><h2>Rewards wardrobe</h2><div class="sub">Earn coins while studying. All characters here are original designs.</div></div><button class="secondary" onclick="showRewards()">Open wardrobe</button></div><div class="rewards" id="rewardPreview"></div></section>
+
+<footer>SCI//NOVA • Educational prototype • Content structure follows the AQA GCSE Separate Science specification. Always check your own exam-board specification.</footer>
+</div>
+
+
+<button id="noriBubble" class="nori-bubble" aria-label="Open Nori" onclick="toggleNori()">N</button>
+<div id="noriPanel" class="nori-panel glass">
+  <div id="noriDrag" class="nori-head">
+    <div class="nori-face">N</div>
+    <div><b>Nori</b><small>SCI//NOVA AI</small></div>
+    <button class="nori-x" onclick="toggleNori()">×</button>
+  </div>
+  <div id="noriChat" class="nori-chat">
+    <div class="nori-msg bot">Heyyy 😭 I'm Nori. Ask me a science question, or tell me something like <b>“give me 40 questions about electrolysis”</b>.</div>
+  </div>
+  <div class="nori-tools">
+    <button onclick="noriQuick('Give me 10 questions about Biology cell biology')">10 questions</button>
+    <button onclick="noriQuick('Give me 10 questions about Physics electricity')">Physics</button>
+    <button onclick="noriQuick('Give me 10 questions about Chemistry chemical changes')">Chemistry</button>
+  </div>
+  <div class="nori-input">
+    <input id="noriInput" placeholder="Ask Nori..." onkeydown="if(event.key==='Enter')sendNori()">
+    <button onclick="sendNori()">↑</button>
+  </div>
+</div>
+
+<div class="modal" id="modal"><div class="dialog glass" id="dialog"></div></div>
+
+<script>
+const data={
+ Biology:{
+  color:"#20a66a", icon:"B", topics:[
+   ["Cell biology",["Cell structure","Cell division","Transport in cells","Required practicals"]],
+   ["Organisation",["Principles of organisation","Animal tissues","Plant tissues","Digestive system","Heart and blood","Blood vessels","Coronary heart disease"]],
+   ["Infection and response",["Communicable diseases","Viral diseases","Bacterial diseases","Fungal diseases","Protist diseases","Human defence systems","Vaccination","Antibiotics","Drug development"]],
+   ["Bioenergetics",["Photosynthesis","Limiting factors","Required practical: photosynthesis","Aerobic respiration","Anaerobic respiration","Exercise"]],
+   ["Homeostasis and response",["Homeostasis","The human nervous system","The brain","The eye","Hormonal coordination","Blood glucose","Kidneys and water balance","Contraception","Hormones and fertility"]],
+   ["Inheritance, variation and evolution",["Reproduction","Cell division and inheritance","Genetic diagrams","Inherited disorders","Variation","Evolution","Selective breeding","Genetic engineering","Fossils and extinction","Classification"]],
+   ["Ecology",["Adaptations","Communities","Sampling","Food chains and biomass","Material cycles","Biodiversity","Land use","Global warming","Waste management","Required practicals"]]
+  ]},
+ Chemistry:{
+  color:"#5b6df6", icon:"C", topics:[
+   ["Atomic structure & periodic table",["Atoms and isotopes","Electronic structure","Periodic table","Groups 0, 1 and 7","Transition metals"]],
+   ["Bonding, structure & properties",["Ionic bonding","Covalent bonding","Metallic bonding","States of matter","Nanoparticles"]],
+   ["Quantitative chemistry",["Relative formula mass","Conservation of mass","Moles","Balanced equations","Concentration","Percentage yield","Atom economy","Gas volumes"]],
+   ["Chemical changes",["Reactivity series","Oxidation and reduction","Acids and alkalis","Making salts","Electrolysis","Half equations"]],
+   ["Energy changes",["Exothermic reactions","Endothermic reactions","Reaction profiles","Bond energies","Required practical: temperature change"]],
+   ["Rate & extent of chemical change",["Factors affecting rate","Collision theory","Catalysts","Reversible reactions","Dynamic equilibrium","Equilibrium position"]],
+   ["Organic chemistry",["Crude oil","Alkanes","Cracking","Alkenes","Alcohols","Carboxylic acids","Polymers"]],
+   ["Chemical analysis",["Pure substances","Formulations","Chromatography","Gas tests","Ion tests"]],
+   ["Chemistry of the atmosphere",["Evolution of atmosphere","Greenhouse gases","Climate change","Pollutants","Carbon footprint"]],
+   ["Using resources",["Finite resources","Potable water","Waste water","Alternative methods","Life cycle assessments","Corrosion","Alloys","Ceramics","Polymers","Composites"]]
+  ]},
+ Physics:{
+  color:"#e07a25", icon:"P", topics:[
+   ["Energy",["Energy stores","Energy transfers","Efficiency","Power","Energy resources","Heating and insulation"]],
+   ["Electricity",["Current","Potential difference","Resistance","Series circuits","Parallel circuits","Domestic electricity","Power and energy","Static electricity"]],
+   ["Particle model of matter",["Density","Changes of state","Internal energy","Specific heat capacity","Specific latent heat","Gas pressure"]],
+   ["Atomic structure",["Atoms and isotopes","Nuclear radiation","Alpha beta gamma","Half-life","Nuclear equations","Uses and hazards"]],
+   ["Forces",["Scalar and vector quantities","Contact forces","Work done","Weight and mass","Elasticity","Moments","Pressure","Motion","Newton's laws","Stopping distance","Momentum"]],
+   ["Waves",["Wave properties","Transverse and longitudinal waves","Electromagnetic spectrum","Sound","Reflection","Refraction","Lenses"]],
+   ["Magnetism & electromagnetism",["Permanent magnets","Magnetic fields","Electromagnets","Motor effect","Generator effect","Transformers"]],
+   ["Space physics",["Solar system","Stars","Orbital motion","Red-shift","Big Bang evidence"]]
+  ]}
+};
+
+const cards=[
+["Biology","Cell biology","What is the function of the nucleus?","It contains genetic material and controls the activities of the cell."],
+["Biology","Cell biology","What is diffusion?","The net movement of particles from an area of higher concentration to an area of lower concentration."],
+["Biology","Cell biology","What is osmosis?","The net movement of water molecules through a partially permeable membrane from a dilute solution to a more concentrated solution."],
+["Biology","Cell biology","What is active transport?","The movement of particles from lower to higher concentration using energy released by respiration."],
+["Biology","Bioenergetics","What is the word equation for photosynthesis?","Carbon dioxide + water → glucose + oxygen."],
+["Biology","Bioenergetics","What is the word equation for aerobic respiration?","Glucose + oxygen → carbon dioxide + water."],
+["Biology","Homeostasis and response","What is homeostasis?","The regulation of internal conditions to maintain optimum conditions for cells."],
+["Biology","Inheritance, variation and evolution","What is a gene?","A section of DNA that codes for a particular protein."],
+["Biology","Ecology","What is a food chain?","A sequence showing how energy and biomass are transferred between organisms through feeding."],
+["Chemistry","Atomic structure & periodic table","What is an isotope?","Atoms of the same element with the same number of protons but different numbers of neutrons."],
+["Chemistry","Atomic structure & periodic table","Why are noble gases unreactive?","They have a full outer electron shell, so they have little tendency to gain, lose or share electrons."],
+["Chemistry","Bonding, structure & properties","What is ionic bonding?","The strong electrostatic attraction between oppositely charged ions."],
+["Chemistry","Quantitative chemistry","What is one mole?","The amount of substance containing the Avogadro number of particles, 6.02 × 10²³."],
+["Chemistry","Chemical changes","What happens to pH when hydrogen ion concentration increases?","The pH decreases; the solution becomes more acidic."],
+["Chemistry","Energy changes","What is an exothermic reaction?","A reaction that transfers energy to the surroundings, usually causing the surroundings to warm."],
+["Chemistry","Rate & extent of chemical change","How does increasing temperature usually affect reaction rate?","It increases the rate because particles have more kinetic energy and more collisions exceed the activation energy."],
+["Chemistry","Organic chemistry","What is cracking?","The thermal decomposition of long-chain hydrocarbons into smaller, more useful hydrocarbons."],
+["Chemistry","Chemical analysis","What is chromatography used for?","Separating mixtures and helping identify substances from their movement through a medium."],
+["Chemistry","Chemistry of the atmosphere","Which gases are major greenhouse gases?","Carbon dioxide, methane, water vapour and others such as nitrous oxide; human activity increases several of them."],
+["Chemistry","Using resources","What is an alloy?","A mixture of elements, at least one of which is a metal, designed to improve properties."],
+["Physics","Energy","What is the equation for kinetic energy?","Ek = ½mv²."],
+["Physics","Energy","What is efficiency?","Useful output energy (or power) divided by total input energy (or power), multiplied by 100%."],
+["Physics","Electricity","What is the equation linking charge, current and time?","Q = It."],
+["Physics","Electricity","What is Ohm's law?","For an ohmic conductor at constant temperature, current is directly proportional to potential difference."],
+["Physics","Particle model of matter","What is density?","Density = mass ÷ volume, ρ = m/V."],
+["Physics","Atomic structure","What is half-life?","The time taken for the number of unstable nuclei in a sample, or its activity, to halve."],
+["Physics","Forces","What is the equation for weight?","W = mg."],
+["Physics","Forces","What is the equation for work done?","Work done = force × distance moved in the direction of the force."],
+["Physics","Waves","What is wave speed?","Wave speed = frequency × wavelength, v = fλ."],
+["Physics","Magnetism & electromagnetism","What happens when a current-carrying wire is placed in a magnetic field?","It experiences a force; this is the motor effect."],
+["Physics","Space physics","What is red-shift evidence for?","It supports the idea that distant galaxies are moving away and provides evidence for an expanding universe."]
+];
+
+const rewards=[
+ ["Nova", "✦", 0, "Starter"],["Neon Runner","◈",120,"Street"],["Orbit Knight","⬡",250,"Rare"],["Cyber Scholar","◇",400,"Elite"],
+ ["Moon Ronin","刀",650,"Mythic"],["Solar Ace","☼",900,"Legend"],["Pixel Alchemist","⌬",1200,"Legend"],["Void Architect","◉",1600,"Apex"]
+];
+let state=JSON.parse(localStorage.getItem("scinova")||"null")||{name:"",xp:0,coins:0,streak:0,mastered:[],owned:["Nova"],equipped:"Nova",dark:false};
+function save(){localStorage.setItem("scinova",JSON.stringify(state));renderStats()}
+function login(){let n=document.getElementById("nameInput").value.trim()||"Scholar";state.name=n;save();document.getElementById("login").style.display="none"}
+function renderStats(){document.getElementById("profile").textContent=state.name||"Guest";document.getElementById("xp").textContent=state.xp;document.getElementById("coins").textContent=state.coins;document.getElementById("streak").textContent=state.streak;document.getElementById("mastery").textContent=Math.min(100,Math.round(state.mastered.length/80*100))+"%"}
+function toggleDark(){state.dark=!state.dark;document.body.classList.toggle("dark",state.dark);save()}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function openModal(html){document.getElementById("dialog").innerHTML=html;document.getElementById("modal").classList.add("show")}
+function renderSubjects(){
+ let el=document.getElementById("subjectCards");el.innerHTML="";
+ for(const [name,s] of Object.entries(data)){
+  const count=s.topics.length; let d=document.createElement("div");d.className="subject glass";d.style.setProperty("--c",s.color);
+  d.innerHTML=`<div class="orb">${s.icon}</div><h3>${name}</h3><p>${count} specification topics • flashcards + quiz</p><span class="pill">Open subject →</span>`;
+  d.onclick=()=>showTopics(name);el.appendChild(d);
+ }
+}
+function showTopics(subject){
+ const s=data[subject];
+ openModal(`<button class="close" onclick="closeModal()">×</button><div class="eyebrow">${subject}</div><h2>Choose a topic</h2><div class="search"><input id="topicSearch" placeholder="Search topics..." oninput="filterTopics('${subject}')"></div><div class="topic-grid" id="topicGrid">${s.topics.map((t,i)=>`<div class="topic glass" data-title="${t[0].toLowerCase()}"><h4>${t[0]}</h4><small>${t[1].length} subtopics</small><button class="go" onclick="showModes('${subject}',${i})">Study →</button></div>`).join("")}</div>`);
+}
+function filterTopics(){let q=document.getElementById("topicSearch").value.toLowerCase();document.querySelectorAll("#topicGrid .topic").forEach(x=>x.style.display=x.dataset.title.includes(q)?"block":"none")}
+function showModes(subject,idx){
+ const t=data[subject].topics[idx];
+ openModal(`<button class="close" onclick="showTopics('${subject}')">×</button><div class="eyebrow">${subject} / ${t[0]}</div><h2>${t[1].length} subtopics</h2><p class="sub">${t[1].join(" • ")}</p><div class="mode-row"><button class="mode" onclick="startFlash('${subject}','${t[0]}')"><b>▣ Flashcards</b><span>Flip through key knowledge and definitions.</span></button><button class="mode" onclick="startQuiz('${subject}','${t[0]}')"><b>✓ Quiz</b><span>Test yourself and earn XP + coins.</span></button></div>`);
+}
+function topicCards(subject,topic){let c=cards.filter(x=>x[0]===subject&&x[1]===topic);if(!c.length)c=cards.filter(x=>x[0]===subject).slice(0,8);return c}
+let session={arr:[],i:0,flipped:false};
+function startFlash(subject,topic){
+ session={arr:topicCards(subject,topic),i:0,flipped:false,subject,topic};
+ renderFlash();
+}
+function renderFlash(){
+ let c=session.arr[session.i];
+ openModal(`<button class="close" onclick="closeModal()">×</button><div class="eyebrow">${session.subject} / ${session.topic}</div><div class="flash" onclick="flipFlash()"><div><small>Card ${session.i+1} / ${session.arr.length}</small>${session.flipped?`<div class="answer">${c[3]}</div>`:`<h2>${c[2]}</h2><p class="sub">Tap the card to reveal the answer</p>`}</div></div><div class="controls">${session.flipped?`<button class="secondary" onclick="nextFlash()">I knew it</button>`:`<button class="primary" onclick="flipFlash()">Reveal answer</button>`}<button class="secondary" onclick="closeModal()">Exit</button></div>`);
+}
+function flipFlash(){session.flipped=!session.flipped;renderFlash()}
+function nextFlash(){state.xp+=10;state.coins+=5;if(session.i<session.arr.length-1){session.i++;session.flipped=false;renderFlash()}else{save();openModal(`<div class="eyebrow">SESSION COMPLETE</div><h2>Clean work. +${session.arr.length*10} XP</h2><p class="sub">Keep going to build your streak and unlock the wardrobe.</p><button class="primary" onclick="closeModal()">Back to hub</button>`)}save()}
+function startQuiz(subject,topic){
+ let base=topicCards(subject,topic), q=base[Math.floor(Math.random()*base.length)];
+ let pool=cards.filter(x=>x[0]===subject&&x!==q);let opts=[q[3],...pool.sort(()=>Math.random()-.5).slice(0,3).map(x=>x[3])].sort(()=>Math.random()-.5);
+ openModal(`<button class="close" onclick="closeModal()">×</button><div class="eyebrow">${subject} / ${topic}</div><h2>${q[2]}</h2><div>${opts.map(o=>`<button class="choice quiz-option" onclick="answerQuiz(this,${JSON.stringify(o)},${JSON.stringify(q[3])})">${o}</button>`).join("")}</div>`);
+}
+function answerQuiz(btn,ans,right){
+ document.querySelectorAll(".quiz-option").forEach(b=>b.disabled=true);
+ if(ans===right){btn.classList.add("correct");state.xp+=25;state.coins+=12;setTimeout(()=>startQuiz(btn.closest(".dialog")?session.subject:"Biology",session.topic||"Cell biology"),650)}
+ else{btn.classList.add("wrong");document.querySelectorAll(".quiz-option").forEach(b=>{if(b.textContent===right)b.classList.add("correct")});setTimeout(()=>{},0)}
+ save();
+}
+function showRewards(){
+ openModal(`<button class="close" onclick="closeModal()">×</button><div class="eyebrow">WARDROBE</div><h2>Build your status.</h2><p class="sub">Original cosmetic characters — no gameplay advantage.</p><div class="rewards">${rewards.map(r=>`<div class="reward glass"><div class="avatar">${r[1]}</div><b>${r[0]}</b><div class="sub">${r[3]}</div><button ${state.owned.includes(r[0])?"":(state.coins<r[2]?"disabled":"")} onclick="buyReward('${r[0]}',${r[2]})">${state.equipped===r[0]?"Equipped":state.owned.includes(r[0])?"Equip":"${r[2]} coins"}</button></div>`).join("")}</div>`);
+}
+function buyReward(name,cost){
+ if(state.owned.includes(name)){state.equipped=name}
+ else if(state.coins>=cost){state.coins-=cost;state.owned.push(name);state.equipped=name}
+ save();showRewards()
+}
+function renderRewardPreview(){document.getElementById("rewardPreview").innerHTML=rewards.slice(0,4).map(r=>`<div class="reward glass"><div class="avatar">${r[1]}</div><b>${r[0]}</b><div class="sub">${r[2]===0?"Starter":r[2]+" coins"}</div></div>`).join("")}
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});
+renderSubjects();renderRewardPreview();renderStats();document.body.classList.toggle("dark",state.dark);
+if(state.name)document.getElementById("login").style.display="none";
+
+async function sendNori(){
+ const input=document.getElementById("noriInput"),text=input.value.trim();
+ if(!text)return;
+ noriAdd(text,"user"); input.value="";
+ const loadingId="nori-loading-"+Date.now();
+ noriAdd('<span id="'+loadingId+'">Nori is thinking... 😭</span>','bot');
+ try{
+   const res=await fetch('/api/nori',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text})});
+   const data=await res.json();
+   const el=document.getElementById(loadingId);
+   if(el) el.parentElement.remove();
+   if(!res.ok) throw new Error(data.error||'Request failed');
+   noriAdd(formatNori(data.reply));
+ }catch(err){
+   const el=document.getElementById(loadingId); if(el) el.parentElement.remove();
+   noriAdd("I couldn't reach the AI right now 😭 Check that the SCI//NOVA server is running and your OpenAI API key is configured.");
+ }
+}
+function formatNori(text){
+ const div=document.createElement('div'); div.textContent=text;
+ return div.innerHTML.replace(/\n/g,'<br>');
+}
+(function(){
+ const panel=document.getElementById("noriPanel"),head=document.getElementById("noriDrag");let down=false,ox=0,oy=0;
+ head.addEventListener("pointerdown",e=>{down=true;const r=panel.getBoundingClientRect();ox=e.clientX-r.left;oy=e.clientY-r.top;head.setPointerCapture(e.pointerId)});
+ head.addEventListener("pointermove",e=>{if(!down)return;let x=Math.max(6,Math.min(innerWidth-panel.offsetWidth-6,e.clientX-ox));let y=Math.max(6,Math.min(innerHeight-panel.offsetHeight-6,e.clientY-oy));panel.style.left=x+"px";panel.style.top=y+"px";panel.style.right="auto";panel.style.bottom="auto"});
+ head.addEventListener("pointerup",()=>down=false);
+})();
+
+</script>
+</body>
+</html>
